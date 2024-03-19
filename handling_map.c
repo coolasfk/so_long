@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 19:38:06 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/18 17:54:45 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:07:16 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	draw_map(t_v *v)
 	v->i_drw = 1;
 	if (v->i_drw)
 		mlx_put_image_to_window(v->mx, v->wn, v->plr, v->p_x, v->p_y);
+	count_steps(v);
 }
 
 void	draw_map_first_loop(t_v *v, int i, int j, int z)
@@ -89,8 +90,7 @@ void	draw_row(t_v *v, int i, int j, int z)
 	else if (v->map[i][j] == '1' && v->i_drw == 1 && v->p_x == j * v->w
 		&& v->p_y == i * v->h)
 	{
-		v->p_x = v->last_x;
-		v->p_y = v->last_y;
+		dont_move(v);
 		mlx_put_image_to_window(v->mx, v->wn, v->plr, v->p_x, v->p_y);
 		mlx_put_image_to_window(v->mx, v->wn, v->im[1], j * v->w, i * v->h);
 	}
@@ -99,8 +99,7 @@ void	draw_row(t_v *v, int i, int j, int z)
 	{
 		if (v->collected != v->c_count)
 		{
-			v->p_x = v->last_x;
-			v->p_y = v->last_y;
+			dont_move(v);
 			mlx_put_image_to_window(v->mx, v->wn, v->plr, v->p_x, v->p_y);
 			mlx_put_image_to_window(v->mx, v->wn, v->im[0], j * v->w, i * v->h);
 		}

@@ -10,10 +10,10 @@ CFLAGS := -Wall -Wextra -Werror -g -Iheaders/
 # Include paths for header files
 
 # Library paths
-LDFLAGS := -L./minilibx -L./libft -L./printf 
+LDFLAGS := -L./minilibx 
 
 # Libraries to link against, including the math library if needed
-LDLIBS := -lmlx -lftprintf -lft -framework OpenGL -framework AppKit -lm
+LDLIBS := -lmlx -framework OpenGL -framework AppKit -lm
 
 # Source files
 SRC = $(wildcard *.c)\

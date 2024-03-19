@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:40:24 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/18 18:56:01 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:02:06 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ void	initialize_v(t_v *v)
 	v->p_c = 0;
 	v->e_c = 0;
 	v->c_check = 0;
-	v->steps = 0;
+	v->steps = -1;
 	v->collected = 0;
 	v->im[0] = NULL;
 	v->im[1] = NULL;
 	v->im[2] = NULL;
 	v->im[3] = NULL;
+	v->steps_code = -1;
 }
 
 int	key_hook(int keycode, t_v *v)
@@ -49,8 +50,6 @@ int	key_hook(int keycode, t_v *v)
 		v->p_x += v->w;
 	if (keycode == 53)
 		end_game(v);
-	//v->steps += 1;
-	//ft_printf("Number of moves: %d\n", v->steps);
 	check_if_collected(v);
 	mlx_clear_window(v->mx, v->wn);
 	draw_map(v);

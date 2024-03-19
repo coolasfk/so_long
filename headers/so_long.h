@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:40:20 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/18 15:09:37 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:07:08 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 # include "mlx.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdbool.h>
 
 typedef struct ct_clist
 {
@@ -73,7 +73,7 @@ typedef struct s_v
 	int				p_c;
 	int				e_c;
 	int				c_check;
-
+	int				steps_code;
 }					t_v;
 
 void				draw_circle(t_v *v, int x, int y, int radius);
@@ -97,5 +97,7 @@ void				check_map_extension(char *s);
 void				initialize_v(t_v *v);
 int					is_map_possible(t_v *v, int i, int j);
 void				check_map_case1(t_v *v);
+void				count_steps(t_v *v);
+void				dont_move(t_v *v);
 
 #endif /* SO_LONG_H */
