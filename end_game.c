@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 19:57:02 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/18 17:56:27 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:48:52 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	end_game(t_v *v)
 	mlx_destroy_image(v->mx, v->im[1]);
 	mlx_destroy_image(v->mx, v->im[2]);
 	mlx_destroy_image(v->mx, v->im[3]);
-	if (v->wn != NULL)
+	if (v->wn)
 		mlx_destroy_window(v->mx, v->wn);
 	exit(0);
 	return (0);
@@ -26,12 +26,11 @@ int	end_game(t_v *v)
 
 void	handle_error(t_v *v, char *str)
 {
-	if(str == NULL)
+	if (str == NULL)
 	{
 		ft_printf("%s\n", "Your map does not exists.");
 		exit(0);
 	}
-	
 	ft_printf("%s\n", str);
 	end_game(v);
 }
@@ -51,9 +50,22 @@ void	check_map_case1(t_v *v)
 			&& v->line[i] != 'P' && v->line[i] != 'C')
 		{
 			ft_printf("%s\n", "The map has an unindentified object, bye!");
-			exit (0);
+			exit(0);
 			return ;
 		}
 		i++;
+	}
+}
+
+void	check_first_row(t_v *v)
+{
+	v->map_check = 1;
+	v->i = 0;
+	while (v->i < (int)ft_strlen(v->line))
+	{
+		printf("%c\n", v->line[v->i]);
+		if (v->line[v->i] != '1' && v->line[v->i] != '\n')
+			handle_error(v, "the map is not surrounded by obstacles");
+		v->i++;
 	}
 }

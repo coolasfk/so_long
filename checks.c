@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 19:44:24 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/02/20 19:04:48 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:50:41 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	check_map_extension(char *s)
 		ft_printf("%s\n", "Yo, your map doesn't have the right .ber extention");
 		exit(0);
 	}
-	if (s[i - 1] != 'r' || s[i - 2] != 'e' || s[i - 3] != 'b' || s[i
-			- 4] != '.')
+	if (s[i - 1] != 'r' || s[i - 2] != 'e'
+		|| s[i - 3] != 'b' || s[i - 4] != '.')
 	{
 		ft_printf("%s\n", "Yo, your map doesn't have the right .ber extention");
 		exit(0);
@@ -85,25 +85,23 @@ void	check_map_extension(char *s)
 
 void	check_map(t_v *v)
 {
-	int	i;
-
-	i = 0;
+	if (v->map_check == 0)
+		check_first_row(v);
+	v->i = 0;
 	if (v->line[ft_strlen(v->line) - 1] == '\n')
-	{
 		check_map_case1(v);
-	}
 	else if (v->line[ft_strlen(v->line) - 1] != '\n')
 	{
 		if (((int)ft_strlen(v->line) != v->tc_x / v->w))
 			handle_error(v, "the map is not square");
-		while (i < (int)ft_strlen(v->line))
+		while (v->i < (int)ft_strlen(v->line))
 		{
-			if (v->line[i] != '1')
+			if (v->line[v->i] != '1')
 				handle_error(v, "the map is not surrounded by obstacles");
-			if (v->line[i] != '0' && v->line[i] != '1' && v->line[i] != 'E'
-				&& v->line[i] != 'P')
+			if (v->line[v->i] != '0' && v->line[v->i] != '1'
+				&& v->line[v->i] != 'E' && v->line[v->i] != 'P')
 				handle_error(v, "The map has an unindentified object, bye!");
-			i++;
+			v->i++;
 		}
 	}
 }

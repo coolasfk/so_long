@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:40:20 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/19 10:07:08 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:30:48 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_v
 	int				y;
 	int				h;
 	int				w;
+	int				i;
 	int				p_x;
 	int				p_y;
 	int				i_drw;
@@ -74,6 +75,7 @@ typedef struct s_v
 	int				e_c;
 	int				c_check;
 	int				steps_code;
+	int				map_check;
 }					t_v;
 
 void				draw_circle(t_v *v, int x, int y, int radius);
@@ -99,5 +101,6 @@ int					is_map_possible(t_v *v, int i, int j);
 void				check_map_case1(t_v *v);
 void				count_steps(t_v *v);
 void				dont_move(t_v *v);
+void				check_first_row(t_v *v);
 
 #endif /* SO_LONG_H */
