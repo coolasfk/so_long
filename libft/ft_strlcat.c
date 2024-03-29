@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 14:25:07 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/01/25 19:43:55 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:55:41 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcat(char *s1, const char *s2, size_t n)
 	size_t	s2_len;
 
 	i = 0;
-	s2_len = ft_strlen((char*)s2);
+	s2_len = ft_strlen((char *)s2);
 	if (n == 0)
 		return (s2_len + n);
 	s1_len = 0;

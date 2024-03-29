@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:21:29 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/19 16:42:28 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:51:02 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	cc;
 
 	i = 0;
-	if (n == 0 )
+	if (n == 0)
 		return (NULL);
 	ss = (unsigned char *)s;
 	cc = (unsigned char)c;
-	while ( i < n)
+	while (i < n)
 	{
 		if (ss[i] == cc)
 			return ((void *)ss + i);

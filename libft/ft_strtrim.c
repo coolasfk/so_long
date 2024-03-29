@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 22:48:37 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/01/25 19:44:49 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:55:57 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 			break ;
 		strt++;
 	}
-	end = ft_strlen((char*)s1);
+	end = ft_strlen((char *)s1);
 	while (end > strt)
 	{
 		if (ft_strchr(set, s1[end - 1]) == NULL)
 			break ;
 		end--;
 	}
-	new = ft_substr((char*)s1, strt, end - strt);
+	new = ft_substr((char *)s1, strt, end - strt);
 	return (new);
 }

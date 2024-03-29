@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:23:18 by eprzybyl          #+#    #+#             */
-/*   Updated: 2023/11/19 15:04:55 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:49:20 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		node = temp->next;
 		del(temp->content);
 		free(temp);
-		//ft_lstdelone(temp, del);
 		temp = node;
 	}
 	*lst = NULL;
 }
-
-/*
-deletes entire list
-*/

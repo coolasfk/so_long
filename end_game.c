@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 19:57:02 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/26 21:48:52 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/03/29 19:05:45 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	check_first_row(t_v *v)
 	v->i = 0;
 	while (v->i < (int)ft_strlen(v->line))
 	{
-		printf("%c\n", v->line[v->i]);
 		if (v->line[v->i] != '1' && v->line[v->i] != '\n')
 			handle_error(v, "the map is not surrounded by obstacles");
 		v->i++;
