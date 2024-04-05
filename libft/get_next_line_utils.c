@@ -6,13 +6,13 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:17:48 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/02/15 15:46:07 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/04/05 20:27:38 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_gsubstr(char *s, unsigned int start, size_t len)
 {
 	char	*new;
 	size_t	i;
@@ -20,7 +20,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	s_len = ft_strlen(s);
+	s_len = ft_gstrlen(s);
 	if (start >= s_len || !len)
 		len = 0;
 	else if (s_len - start < len)
@@ -38,7 +38,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (new);
 }
 
-size_t	ft_strlen(char *str)
+size_t	ft_gstrlen(char *str)
 {
 	size_t	i;
 
@@ -48,7 +48,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_gstrchr(const char *s, int c)
 {
 	int	i;
 
@@ -94,13 +94,13 @@ char	*find_n(char *entire_buff, t_glist **reminder)
 	i = 0;
 	while (entire_buff[i] != '\n' && entire_buff[i] != '\0')
 		i++;
-	new_content = ft_substr(entire_buff, 0, i + 1);
+	new_content = ft_gsubstr(entire_buff, 0, i + 1);
 	if (BUFFER_SIZE > i + 1 && entire_buff[i + 1] != '\0')
 	{
 		*reminder = (t_glist *)malloc(sizeof(t_glist));
 		if (!*reminder)
 			return (NULL);
-		(*reminder)->content = ft_substr(entire_buff, i + 1, BUFFER_SIZE - i
+		(*reminder)->content = ft_gsubstr(entire_buff, i + 1, BUFFER_SIZE - i
 				- 1);
 		if (!(*reminder)->content)
 		{

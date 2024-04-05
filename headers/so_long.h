@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:40:20 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/26 21:30:48 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/04/05 20:32:51 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@
 # endif
 
 # include "ft_printf.h"
-# include "get_next_line.h"
-# include "libft.h"
-# include "mlx.h"
+# include "../libft/libft.h"
+# include "../minilibx/mlx.h"
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>

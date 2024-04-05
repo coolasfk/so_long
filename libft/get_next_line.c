@@ -6,11 +6,11 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:17:52 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/02/15 15:45:23 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/04/05 20:27:43 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 int	append_to_list(t_glist **m_list, char *buffer, t_glist **rem)
 {
@@ -20,10 +20,10 @@ int	append_to_list(t_glist **m_list, char *buffer, t_glist **rem)
 	temp = (t_glist *)malloc(sizeof(t_glist));
 	if (!temp)
 		return (-1);
-	if (ft_strchr(buffer, '\n'))
+	if (ft_gstrchr(buffer, '\n'))
 		temp->content = find_n(buffer, rem);
 	else
-		temp->content = ft_substr(buffer, 0, ft_strlen(buffer));
+		temp->content = ft_gsubstr(buffer, 0, ft_gstrlen(buffer));
 	if (!temp->content)
 		return (-1);
 	temp->next = NULL;
@@ -46,7 +46,7 @@ char	*extract_line(t_glist **m_list, char *line, int i, int len)
 	temp = *m_list;
 	while (temp)
 	{
-		len += ft_strlen(temp->content);
+		len += ft_gstrlen(temp->content);
 		temp = temp->next;
 	}
 	line = (char *)malloc(sizeof(char) * (len + 1));
@@ -108,7 +108,7 @@ char	*find_line(int fd, t_glist **m, t_glist **rem, char *temp)
 
 	while (1)
 	{
-		if (*m != NULL && ft_strchr((*m)->content, '\n'))
+		if (*m != NULL && ft_gstrchr((*m)->content, '\n'))
 		{
 			temp = find_n((*m)->content, rem);
 			free((*m)->content);
@@ -124,7 +124,7 @@ char	*find_line(int fd, t_glist **m, t_glist **rem, char *temp)
 		buf[b] = '\0';
 		if ((b < 1 && *m == NULL) || append_to_list(m, buf, rem) < 0)
 			return (NULL);
-		if (ft_strchr(buf, '\n') || b < BUFFER_SIZE)
+		if (ft_gstrchr(buf, '\n') || b < BUFFER_SIZE)
 			break ;
 	}
 	return (extract_line(m, temp, 0, 0));

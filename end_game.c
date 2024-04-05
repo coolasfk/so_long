@@ -6,7 +6,7 @@
 /*   By: eprzybyl <eprzybyl@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 19:57:02 by eprzybyl          #+#    #+#             */
-/*   Updated: 2024/03/29 19:05:45 by eprzybyl         ###   ########.fr       */
+/*   Updated: 2024/04/05 21:29:10 by eprzybyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	check_map_case1(t_v *v)
 	if (((int)ft_strlen(v->line) != v->tc_x / v->w + 1))
 		handle_error(v, "the map is not square");
 	if ((v->line[ft_strlen(v->line) - 2] != '1') || v->line[0] != '1')
-		handle_error(v, "the map is not surrounded by obstacles");
+	{
+		ft_printf("%s\n", "The map is not surrounded by obstacles, bye!");
+		exit(0);
+	}
 	while (i < (int)ft_strlen(v->line) - 1)
 	{
 		if (v->line[i] != '0' && v->line[i] != '1' && v->line[i] != 'E'
@@ -51,7 +54,6 @@ void	check_map_case1(t_v *v)
 		{
 			ft_printf("%s\n", "The map has an unindentified object, bye!");
 			exit(0);
-			return ;
 		}
 		i++;
 	}

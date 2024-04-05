@@ -10,18 +10,17 @@ CFLAGS := -Wall -Wextra -Werror -g -Iheaders/
 # Include paths for header files
 
 # Library paths
-LDFLAGS := -L./minilibx 
+LDFLAGS := -L./minilibx -L./libft -L./printf
 
 # Libraries to link against, including the math library if needed
-LDLIBS := -lmlx -framework OpenGL -framework AppKit -lm
+LDLIBS := -lft -lftprintf -lmlx -framework OpenGL -framework AppKit -lm
 
+LFT = libft/libft.a
+PFT = printf/libftprintf.a
+MFT = minilibx/libmlx.a
 # Source files
-SRC = $(wildcard *.c)\
-      $(wildcard gnl/*.c) \
-      $(wildcard libft/ft_*.c) \
-      $(wildcard printf/ft_*.c) \
-      $(wildcard mlx/*.c) 
-      # Add all your source files here
+SRC = $(wildcard *.c)
+	# Add all your source files here
 	  
 # SRC := $(wildcard src/*.c)
 # Object files
@@ -34,7 +33,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 # Rule to link the program
-$(NAME): $(OBJ)
+$(NAME): $(LFT) $(PFT) $(MFT) $(OBJ)
 	$(CC) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 # Rule to compile source files into object files
@@ -45,10 +44,23 @@ $(NAME): $(OBJ)
 # Rule to clean object files and other temporary files
 clean:
 	rm -f $(OBJ) $(NAME)
+	make -C minilibx clean
+	make -C libft clean
+	make -C printf clean
 
 # Rule to fully clean the project, including the executable
 fclean: clean
 	rm -f $(NAME)
+	make -C libft fclean
+	make -C printf fclean
 
 # Rule to re-make the project
 re: fclean all
+
+libft/libft.a:
+			make -C libft all
+printf/libftprintf.a:
+			make -C printf all
+minilibx/libmlx.a:
+			make -C minilibx all
+
